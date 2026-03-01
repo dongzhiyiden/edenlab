@@ -22,7 +22,7 @@ const tools = [
     title: "Token Analytics",
     desc: "Pump.fun 毕业代币数据分析",
     href: "/tokens",
-    ready: false,
+    ready: true,
     badge: null,
   },
   {
