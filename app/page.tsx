@@ -1,65 +1,93 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const tools = [
+  {
+    icon: "🔍",
+    title: "Smart Money Tracker",
+    desc: "实时追踪 Solana 聪明钱钱包动向",
+    href: "/smart-money",
+    ready: true,
+  },
+  {
+    icon: "📊",
+    title: "Token Analytics",
+    desc: "Pump.fun 毕业代币数据分析",
+    href: "/tokens",
+    ready: false,
+  },
+  {
+    icon: "🤖",
+    title: "AI Contract Audit",
+    desc: "智能合约安全分析",
+    href: "/audit",
+    ready: false,
+  },
+  {
+    icon: "📰",
+    title: "Web3 Daily",
+    desc: "每日 Web3 要闻摘要",
+    href: "/news",
+    ready: false,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-gray-950 text-white">
+      <nav className="border-b border-gray-800 px-6 py-4 flex items-center justify-between">
+        <span className="text-xl font-bold tracking-tight">
+          Eden<span className="text-emerald-400">Lab</span>
+        </span>
+        <div className="flex gap-6 text-sm text-gray-400">
+          <Link href="/" className="hover:text-white transition">首页</Link>
+          <Link href="/about" className="hover:text-white transition">关于</Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </nav>
+
+      <section className="px-6 py-20 text-center">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          东之伊甸的{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+            AI & Web3
+          </span>{" "}
+          工具站
+        </h1>
+        <p className="text-gray-400 text-lg mt-4 max-w-xl mx-auto">
+          聪明钱追踪 · 链上分析 · AI 工具集合
+        </p>
+      </section>
+
+      <section className="px-6 pb-20 max-w-5xl mx-auto">
+        <h2 className="text-sm uppercase tracking-widest text-gray-500 mb-6">工具集</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {tools.map((tool) => (
+            <div
+              key={tool.title}
+              className={`relative rounded-2xl border p-6 transition group ${
+                tool.ready
+                  ? "border-emerald-800 bg-gray-900 hover:border-emerald-500 cursor-pointer"
+                  : "border-gray-800 bg-gray-900/50 opacity-60"
+              }`}
+            >
+              {tool.ready ? (
+                <Link href={tool.href} className="absolute inset-0" />
+              ) : null}
+              <div className="text-3xl mb-3">{tool.icon}</div>
+              <h3 className="font-semibold text-lg mb-1">{tool.title}</h3>
+              <p className="text-gray-400 text-sm">{tool.desc}</p>
+              {!tool.ready && (
+                <span className="mt-3 inline-block text-xs text-gray-600 border border-gray-700 rounded-full px-2 py-0.5">
+                  即将上线
+                </span>
+              )}
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <footer className="border-t border-gray-800 px-6 py-6 text-center text-gray-600 text-sm">
+        © 2026 EdenLab · Built by 东之伊甸
+      </footer>
+    </main>
   );
 }
