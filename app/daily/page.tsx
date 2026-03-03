@@ -57,7 +57,7 @@ export default function DailyPage() {
     : ''
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f0f1a', color: '#e5e7eb', fontFamily: "'Courier New', monospace", padding: '24px 16px' }}>
+    <div style={{ minHeight: '100vh', background: '#0f0f1a', color: '#e5e7eb', fontFamily: "'Courier New', monospace", padding: '24px 16px', WebkitOverflowScrolling: 'touch' as any }}>
       <div style={{ maxWidth: 900, margin: '0 auto 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Link href="/" style={{ color: '#ffd700', textDecoration: 'none', fontSize: 14, border: '1px solid #e94560', padding: '6px 12px', borderRadius: 4 }}>← 主页</Link>
         <h1 style={{ fontSize: 20, color: '#ffd700', letterSpacing: 2, margin: 0 }}>🗞️ 每日简报</h1>

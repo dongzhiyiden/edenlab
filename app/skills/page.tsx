@@ -266,7 +266,7 @@ export default function SkillsPage() {
   const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f0f1a', color: '#e5e7eb', fontFamily: "'Courier New', monospace", paddingBottom: 100 }}>
+    <div style={{ minHeight: '100vh', background: '#0f0f1a', color: '#e5e7eb', fontFamily: "'Courier New', monospace", paddingBottom: 100, WebkitOverflowScrolling: 'touch' as any }}>
       <style>{`
         .skills-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
         @media (min-width: 641px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
