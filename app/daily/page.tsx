@@ -51,7 +51,7 @@ export default function DailyPage() {
 
   const currentTab = tabs.find(t => t.key === activeTab)!
   const currentData = dataMap[activeTab]
-  const newsList = currentData?.news || []
+  const newsList = (currentData as any)?.news || (currentData as any)?.highlights || []
   const updatedTime = currentData?.updatedAt
     ? new Date(currentData.updatedAt).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', hour12: false })
     : ''
@@ -124,7 +124,7 @@ export default function DailyPage() {
                     )}
                   </div>
                 </div>
-                <div style={{ color: '#9ca3af', fontSize: 13, lineHeight: 1.6, marginBottom: 8 }}>{item.summary}</div>
+                <div style={{ color: '#9ca3af', fontSize: 13, lineHeight: 1.6, marginBottom: 8 }}>{(item as any).summary || (item as any).content || ''}</div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: 11, color: '#4b5563' }}>来源：{item.source}</span>
                   {isMeme && item.tags && (

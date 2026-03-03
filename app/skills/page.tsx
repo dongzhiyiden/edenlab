@@ -126,16 +126,11 @@ function Modal({ skill, onClose }: { skill: Skill; onClose: () => void }) {
   const installCmd = skill.installCmd || (skill.id ? `openclaw skill install ${skill.id}` : "")
 
   useEffect(() => {
-    // 记录当前滚动位置，用 fixed + top 替代 overflow:hidden，兼容 iOS Safari
-    const scrollY = window.scrollY
-    document.body.style.position = 'fixed'
-    document.body.style.top = `-${scrollY}px`
-    document.body.style.width = '100%'
+    // 简单锁定 body 滚动，关闭时还原
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
     return () => {
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      window.scrollTo(0, scrollY)
+      document.body.style.overflow = prev
     }
   }, [])
 
