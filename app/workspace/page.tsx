@@ -2,7 +2,7 @@ export default function WorkspacePage() {
   return (
     <div style={{
       width: '100vw',
-      height: '100vh',
+      height: '100svh',
       margin: 0,
       padding: 0,
       background: '#1a1a2e',

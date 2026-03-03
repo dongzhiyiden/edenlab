@@ -132,7 +132,7 @@ function Modal({ skill, onClose }: { skill: Skill; onClose: () => void }) {
 
   return (
     <div onClick={onClose} style={{
-      position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
       background: 'rgba(0,0,0,0.85)',
       zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
       overflow: 'hidden'
@@ -266,7 +266,7 @@ export default function SkillsPage() {
   const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f0f1a', color: '#e5e7eb', fontFamily: "'Courier New', monospace", paddingBottom: 100, WebkitOverflowScrolling: 'touch' as any }}>
+    <div style={{ minHeight: '100svh', background: '#0f0f1a', color: '#e5e7eb', fontFamily: "'Courier New', monospace", paddingBottom: 100 }}>
       <style>{`
         .skills-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
         @media (min-width: 641px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
