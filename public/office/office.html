@@ -659,6 +659,7 @@
         async function loadMemo() {
             const memoDate = document.getElementById('memo-date');
             const memoContent = document.getElementById('memo-content');
+            if (!memoDate || !memoContent) return;
             
             try {
                 const response = await fetch('/yesterday-memo?t=' + Date.now(), { cache: 'no-store' });
@@ -672,7 +673,7 @@
                 }
             } catch (e) {
                 console.error('加载 memo 失败:', e);
-                memoContent.innerHTML = '<div id="memo-placeholder">加载失败</div>';
+                if (memoContent) memoContent.innerHTML = '<div id="memo-placeholder">加载失败</div>';
             }
         }
 
